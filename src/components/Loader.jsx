@@ -5,7 +5,6 @@ const Loader = ({ name }) => {
   const [particles, setParticles] = useState([]);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const containerRef = useRef(null);
-  const nameChars = name.split('');
   
   // Generate initial particles
   useEffect(() => {
@@ -124,19 +123,8 @@ const Loader = ({ name }) => {
       {/* Main content */}
       <div className="text-center w-full max-w-md px-4 z-10 mt-8">
         <div className="loader-container relative inline-block mb-6 mx-auto">
-          <h1 className="hero-heading text-xl sm:text-2xl md:text-3xl lg:text-4xl px-3 sm:px-5 md:px-7 lg:px-9 py-3 sm:py-4 md:py-5 lg:py-6 relative z-10">
-            {nameChars.map((char, index) => (
-              <span 
-                key={index} 
-                className="char-animate" 
-                style={{ 
-                  animationDelay: `${index * 0.1}s`,
-                  color: `hsl(${220 + index * (120 / nameChars.length)}, 70%, 60%)`
-                }}
-              >
-                {char === ' ' ? '\u00A0' : char}
-              </span>
-            ))}
+          <h1 className="name-heading text-xl sm:text-2xl md:text-3xl lg:text-4xl px-3 sm:px-5 md:px-7 lg:px-9 py-3 sm:py-4 md:py-5 lg:py-6 relative z-10">
+            <span className="name-text">{name}</span>
           </h1>
           <div className="pulse-ring"></div>
         </div>
@@ -178,11 +166,42 @@ const Loader = ({ name }) => {
         .loader-container {
           position: relative;
           width: fit-content;
-          backdrop-filter: blur(5px);
-          background: rgba(0, 0, 0, 0.3);
+          background: rgba(0, 0, 0, 0.5);
           border-radius: 12px;
-          border: 1px solid rgba(71, 118, 230, 0.3);
+          border: 2px solid rgba(71, 118, 230, 0.5);
           box-shadow: 0 0 20px rgba(71, 118, 230, 0.2);
+        }
+        
+        .name-heading {
+          font-family: 'Space Grotesk', sans-serif;
+          font-weight: 700;
+          letter-spacing: 0.5px;
+        }
+        
+        .name-text {
+          background: linear-gradient(to right, #4776E6, #8E54E9);
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+          display: inline-block;
+          background-size: 200% auto;
+          -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+          transform: translateZ(0);
+          will-change: transform;
+          animation: name-gradient-shift 4s ease infinite;
+        }
+        
+        @keyframes name-gradient-shift {
+          0% {
+            background-position: 0% center;
+          }
+          50% {
+            background-position: 100% center;
+          }
+          100% {
+            background-position: 0% center;
+          }
         }
         
         .pulse-ring {
@@ -219,22 +238,6 @@ const Loader = ({ name }) => {
           100% {
             transform: scale(1);
             opacity: 1;
-          }
-        }
-        
-        .char-animate {
-          display: inline-block;
-          opacity: 0;
-          transform: translateY(20px);
-          animation: char-appear 0.5s forwards;
-          animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
-          text-shadow: 0 0 8px currentColor;
-        }
-        
-        @keyframes char-appear {
-          to {
-            opacity: 1;
-            transform: translateY(0);
           }
         }
         
