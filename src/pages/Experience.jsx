@@ -57,32 +57,32 @@ const Experience = () => {
       CGPA: "CGPA: 7.18/10",
       icon: <GraduationCap className="h-6 w-6 text-primary" />
     }, 
-    // {
-    //   degree: "Bachelor of Engineering",
-    //   institution: "Marwadi University",
-    //   period: "2022 - Present",
-    //   description: "Specializing in Artificial Intelligence and Machine Learning." ,
-    //   CGPA: "CGPA: 7.18/10",
-    //   icon: <GraduationCap className="h-6 w-6 text-primary" />
-    // } 
+    {
+      degree: "Higher Secondary",
+      institution: "Vardan Public School", 
+      period: "2019 - 2021",
+      description: "Completed Higher Secondary Education with a focus on Science and Mathematics.", 
+      CGPA: "Percentage: 88.6%",
+      icon: <GraduationCap className="h-6 w-6 text-primary" />
+    } 
   ];
 
-  const achievements = [
-    {
-      title: "Hackathon - 1st Runner Up",
-      organization: "Hack The Mountains",
-      year: "September 2024",
-      description: "Participated in a HTM 5.0 , In the healthcare track, the team developed an innovative Ayurveda-based healthcare app designed to be a one-stop solution for all Ayurvedic needs.",
-      icon: <Award className="h-6 w-6 text-primary" />
-    },
-    {
-      title: "Dean's List",
-      organization: "University of Technology",
-      year: "2022-2023",
-      description: "Recognized for academic excellence for three consecutive semesters.",
-      icon: <Award className="h-6 w-6 text-primary" />
-    }
-  ];
+  // const achievements = [
+  //   {
+  //     title: "Hackathon - 1st Runner Up",
+  //     organization: "Hack The Mountains",
+  //     year: "September 2024",
+  //     description: "Participated in a HTM 5.0 , In the healthcare track, the team developed an innovative Ayurveda-based healthcare app designed to be a one-stop solution for all Ayurvedic needs.",
+  //     icon: <Award className="h-6 w-6 text-primary" />
+  //   },
+  //   {
+  //     title: "Dean's List",
+  //     organization: "University of Technology",
+  //     year: "2022-2023",
+  //     description: "Recognized for academic excellence for three consecutive semesters.",
+  //     icon: <Award className="h-6 w-6 text-primary" />
+  //   }
+  // ];
 
   return (
     <motion.div
@@ -143,7 +143,7 @@ const Experience = () => {
             ))}
           </div>
 
-          <h2 className="text-2xl font-bold mb-6 mt-12">Achievements</h2>
+          {/* <h2 className="text-2xl font-bold mb-6 mt-12">Achievements</h2>
           <div className="space-y-8">
             {achievements.map((achievement, index) => (
               <motion.div 
@@ -161,7 +161,7 @@ const Experience = () => {
                 </div>
               </motion.div>
             ))}
-          </div>
+          </div> */}
         </motion.div>
       </div>
     </motion.div>

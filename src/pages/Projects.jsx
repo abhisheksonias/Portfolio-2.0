@@ -27,7 +27,7 @@ const Projects = () => {
 
   const projects = [
     {
-      title: "Renewable Energy Monitoring System",
+      title: "Vruksham",
       description: "Designed and built an IoT-based system to monitor and optimize energy production from renewable sources. Implemented real-time data visualization and predictive analytics.",
       technologies: ["Arduino", "Python", "React", "IoT", "Machine Learning"],
       image: "renewable-energy-project.jpg",
@@ -35,7 +35,7 @@ const Projects = () => {
       demo: "https://demo.com"
     },
     {
-      title: "Automated Hydroponic Garden",
+      title: "Satyamed",
       description: "Created a fully automated hydroponic system with sensors to monitor water quality, nutrient levels, and plant growth. Controlled via a mobile application.",
       technologies: ["Raspberry Pi", "Node.js", "React Native", "Sensors", "Automation"],
       image: "hydroponic-garden.jpg",
@@ -43,7 +43,7 @@ const Projects = () => {
       demo: "https://demo.com"
     },
     {
-      title: "Structural Analysis Software",
+      title: "Satarksetu",
       description: "Developed a software tool for analyzing structural integrity of buildings under various stress conditions. Includes 3D visualization and simulation capabilities.",
       technologies: ["Python", "C++", "Three.js", "Physics Engine", "WebGL"],
       image: "structural-analysis.jpg",
@@ -51,7 +51,7 @@ const Projects = () => {
       demo: "https://demo.com"
     },
     {
-      title: "Smart Traffic Management System",
+      title: "Gesture Recogination",
       description: "Designed an AI-powered traffic management system that optimizes signal timing based on real-time traffic conditions, reducing congestion and wait times.",
       technologies: ["Computer Vision", "TensorFlow", "Embedded Systems", "Data Analysis"],
       image: "traffic-management.jpg",
@@ -59,7 +59,7 @@ const Projects = () => {
       demo: "https://demo.com"
     },
     {
-      title: "Wearable Health Monitor",
+      title: "K7 website",
       description: "Created a wearable device that monitors vital signs and provides health insights. Features include heart rate monitoring, sleep tracking, and activity recognition.",
       technologies: ["Embedded C", "Bluetooth", "Mobile App", "Data Visualization", "Health Metrics"],
       image: "health-monitor.jpg",
@@ -67,7 +67,23 @@ const Projects = () => {
       demo: "https://demo.com"
     },
     {
-      title: "Sustainable Materials Database",
+      title: "Currency converter",
+      description: "Created a wearable device that monitors vital signs and provides health insights. Features include heart rate monitoring, sleep tracking, and activity recognition.",
+      technologies: ["Embedded C", "Bluetooth", "Mobile App", "Data Visualization", "Health Metrics"],
+      image: "health-monitor.jpg",
+      github: "https://github.com",
+      demo: "https://demo.com"
+    },
+    {
+      title: "Amazon Clone",
+      description: "Created a wearable device that monitors vital signs and provides health insights. Features include heart rate monitoring, sleep tracking, and activity recognition.",
+      technologies: ["Embedded C", "Bluetooth", "Mobile App", "Data Visualization", "Health Metrics"],
+      image: "health-monitor.jpg",
+      github: "https://github.com",
+      demo: "https://demo.com"
+    },
+    {
+      title: "Smark car parking system",
       description: "Developed a comprehensive database of sustainable materials for engineering applications, including properties, environmental impact, and sourcing information.",
       technologies: ["Database Design", "Web Development", "Material Science", "Sustainability Metrics"],
       image: "materials-database.jpg",

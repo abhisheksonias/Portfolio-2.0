@@ -24,7 +24,7 @@ function App() {
   }, []);
 
   if (loading) {
-    return <Loader name="Warming up neurons…" />;
+    return <Loader name="Chasing Perfection" />;
   }
 
   return (
