@@ -27,7 +27,7 @@ const Experience = () => {
   const experiences = [
     {
       title: "Backend Developer",
-      company: "Mentorle",
+      company: "Quinebay",
       period: "April 2025 - Present",
       description: "As a Backend Developer, I design and implement robust server-side logic, APIs, and databases to support seamless functionality and high-performance applications. Using languages like Node.js, Python, and Java, I ensure smooth data flow and integration with frontend systems. I focus on optimizing server performance, enhancing security, and ensuring scalability for future growth.",
       icon: <Briefcase className="h-6 w-6 text-primary" />
