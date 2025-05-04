@@ -24,7 +24,7 @@ function App() {
   }, []);
 
   if (loading) {
-    return <Loader name="Chasing Perfection" />;
+    return <Loader name="Judging You Silently" />;
   }
 
   return (
