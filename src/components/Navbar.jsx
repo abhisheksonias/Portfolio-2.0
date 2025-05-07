@@ -36,7 +36,9 @@ const Navbar = () => {
     { name: 'Home', path: '/' },
     { name: 'Experience', path: '/experience' },
     { name: 'Milestones', path: '/Milestones' },
-    { name: 'Projects', path: '/projects' }
+    { name: 'Projects', path: '/projects' },
+    { name: 'Certificate', path: '/Certificate' },
+    { name: 'Blogs', path: '/Blogs' }
   ];
 
   const resumeUrl = './resume.pdf'; // Replace with actual resume URL

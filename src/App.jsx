@@ -10,6 +10,9 @@ import Projects from '@/pages/Projects';
 import ThemeProvider from '@/components/ThemeProvider';
 import Canvas3D from '@/components/Canvas3D';
 import Milestones from './pages/Milestones';
+import Certificate from './pages/Certificate';
+import Blogs from './pages/Blogs';
+
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -39,6 +42,8 @@ function App() {
               <Route path="/experience" element={<Experience />} />
               <Route path="/Milestones" element={<Milestones />} />
               <Route path="/projects" element={<Projects />} />
+              <Route path="/Certificate" element={<Certificate />} />
+              <Route path="/Blogs" element={<Blogs />} />
             </Routes>
           </AnimatePresence>
           <Toaster />
