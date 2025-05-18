@@ -237,38 +237,6 @@ const Milestones = () => {
         </motion.div>
 
         <motion.div variants={itemVariants} className="space-y-8">
-          <h2 className="text-2xl font-bold mb-6"> Patents & Publications</h2>
-          <div className="space-y-8">
-            {publication.map((pub, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                className="timeline-item"
-              >
-                <div className="glass-effect rounded-lg p-6">
-                  <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-xl font-semibold">{pub.title}</h3>
-                    <span className="text-sm text-muted-foreground">
-                      {pub.year}
-                    </span>
-                  </div>
-                  <p className="text-primary mb-2">
-                    {/* <a
-                      href={pub.website}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                    </a> */}
-                      {pub.journal}
-                  </p>
-                  <p className="text-muted-foreground">{pub.description}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
-        <motion.div variants={itemVariants} className="space-y-8">
           <h2 className="text-2xl font-bold mb-6">Extracurricular Achievements</h2>
           <div className="space-y-8">
             {extra.map((extra, index) => (
@@ -331,6 +299,39 @@ const Milestones = () => {
             ))}
           </div>
         </motion.div>
+
+        <motion.div variants={itemVariants} className="space-y-8">
+          <h2 className="text-2xl font-bold mb-6"> Patents & Publications</h2>
+          <div className="space-y-8">
+            {publication.map((pub, index) => (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                className="timeline-item"
+              >
+                <div className="glass-effect rounded-lg p-6">
+                  <div className="flex justify-between items-start mb-2">
+                    <h3 className="text-xl font-semibold">{pub.title}</h3>
+                    <span className="text-sm text-muted-foreground">
+                      {pub.year}
+                    </span>
+                  </div>
+                  <p className="text-primary mb-2">
+                    {/* <a
+                      href={pub.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                    </a> */}
+                      {pub.journal}
+                  </p>
+                  <p className="text-muted-foreground">{pub.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
 
       </div>
     </motion.div>
