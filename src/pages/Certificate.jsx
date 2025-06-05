@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
@@ -27,41 +26,41 @@ const Certificate = () => {
 
   const Certificates = [
     {
-      title: "Smark car parking system",
-      image: "materials-database.jpg",  
-    },,
+      title: "CPA: Programming Essentials C++",
+      image: "CPA.jpg",  
+    },
     {
-      title: "Smark car parking system",
-      image: "materials-database.jpg",  
-    },,
+      title: "Design Thinking & Innovation",
+      image: "DTPS.jpg",  
+    },
     {
-      title: "Smark car parking system",
-      image: "materials-database.jpg",  
-    },,
+      title: "Python 101 for Data science",
+      image: "IBM.jpg",  
+    },
     {
-      title: "Smark car parking system",
-      image: "materials-database.jpg",  
-    },,
+      title: "Linux Essentials",
+      image: "linux.jpg",  
+    },
     {
-      title: "Smark car parking system",
-      image: "materials-database.jpg",  
-    },,
+      title: "Network Support and Security",
+      image: "Network_Support_and_Security.jpg",  
+    },
     {
-      title: "Smark car parking system",
-      image: "materials-database.jpg",  
-    },,
+      title: "Networking Adderessing and basic troubleshooting",
+      image: "Networking_Adderessing_and_basic_troubleshooting.jpg",  
+    },
     {
-      title: "Smark car parking system",
-      image: "materials-database.jpg",  
-    },,
+      title: "Networking Basic Page",
+      image: "Networking_Basic_page.jpg",  
+    },
     {
-      title: "Smark car parking system",
-      image: "materials-database.jpg",  
-    },,
+      title: "Database Programming with SQL",
+      image: "Oracel.jpg",  
+    },
     {
-      title: "Smark car parking system",
-      image: "materials-database.jpg",  
-    },,
+      title: "Getting Started With Python",
+      image: "python.jpg",  
+    },
   ];
 
   return (
@@ -93,7 +92,7 @@ const Certificate = () => {
               <img  
                 className="w-full h-full object-cover transition-transform duration-500 hover:scale-110" 
                 alt={project.title}
-               src="https://images.unsplash.com/photo-1694388001616-1176f534d72f" />
+                src={`/certificates/${project.image}`} />
               <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-60"></div>
             </div>
             
