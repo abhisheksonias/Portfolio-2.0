@@ -12,6 +12,7 @@ import Canvas3D from '@/components/Canvas3D';
 import Milestones from './pages/Milestones';
 import Certificate from './pages/Certificate';
 import Blogs from './pages/Blogs';
+import Services from './pages/Services';
 
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
               <Route path="/projects" element={<Projects />} />
               <Route path="/Certificate" element={<Certificate />} />
               <Route path="/Blogs" element={<Blogs />} />
+              <Route path="/services" element={<Services />} />
             </Routes>
           </AnimatePresence>
           <Toaster />

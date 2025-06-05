@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
@@ -90,6 +89,71 @@ const Home = () => {
           </div>
         </motion.div>
       </div>
+      
+      {/* Services Highlight Section */}
+      <motion.div 
+        variants={itemVariants} 
+        className="max-w-4xl mx-auto mt-24 mb-24 glass-effect p-8 rounded-xl"
+      >
+        <h2 className="text-2xl md:text-3xl font-bold mb-6 gradient-text text-center">Available for Freelance Projects</h2>
+        <p className="text-center mb-6 text-muted-foreground">
+          I build custom web applications, design stunning interfaces, and develop robust backend solutions.
+        </p>
+        
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-8">
+          <div className="service-item text-center p-4">
+            <div className="icon-circle bg-primary/10 p-3 rounded-full w-14 h-14 flex items-center justify-center mx-auto mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
+                <path d="m18 16 4-4-4-4"></path>
+                <path d="m6 8-4 4 4 4"></path>
+                <path d="m14.5 4-5 16"></path>
+              </svg>
+            </div>
+            <h3 className="font-bold mb-2">Web Development</h3>
+            <p className="text-sm text-muted-foreground">React, Next.js, and custom solutions</p>
+          </div>
+          
+          <div className="service-item text-center p-4">
+            <div className="icon-circle bg-primary/10 p-3 rounded-full w-14 h-14 flex items-center justify-center mx-auto mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
+                <path d="M4 12h16"></path>
+                <path d="M4 12a2 2 0 0 0 2-2V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2"></path>
+                <path d="M4 12a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-4a2 2 0 0 1 2-2"></path>
+              </svg>
+            </div>
+            <h3 className="font-bold mb-2">API Integration</h3>
+            <p className="text-sm text-muted-foreground">Backend development and data handling</p>
+          </div>
+          
+          <div className="service-item text-center p-4">
+            <div className="icon-circle bg-primary/10 p-3 rounded-full w-14 h-14 flex items-center justify-center mx-auto mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"></path>
+                <path d="M12 2v2"></path>
+                <path d="M12 20v2"></path>
+                <path d="m4.93 4.93 1.41 1.41"></path>
+                <path d="m17.66 17.66 1.41 1.41"></path>
+                <path d="M2 12h2"></path>
+                <path d="M20 12h2"></path>
+                <path d="m6.34 17.66-1.41 1.41"></path>
+                <path d="m19.07 4.93-1.41 1.41"></path>
+              </svg>
+            </div>
+            <h3 className="font-bold mb-2">UI/UX Design</h3>
+            <p className="text-sm text-muted-foreground">Beautiful, functional interfaces</p>
+          </div>
+        </div>
+        
+        <div className="text-center">
+          <Link to="/services">
+            <Button size="lg" className="gap-2">
+              View All Services
+              <ArrowRight className="h-4 w-4" />
+            </Button>
+          </Link>
+        </div>
+      </motion.div>
       
       <motion.div 
         variants={itemVariants}
