@@ -30,7 +30,7 @@ const Projects = () => {
       title: "Vruksham",
       description: "Designed and built an IoT-based system to monitor and optimize energy production from renewable sources. Implemented real-time data visualization and predictive analytics.",
       technologies: ["Arduino", "Python", "React", "IoT", "Machine Learning"],
-      image: "renewable-energy-project.jpg",
+      image: "Vruksham.png",
       github: "github.com/abhisheksonias/Vruksham",
       demo: "github.com/abhisheksonias/Vruksham"
     },
@@ -38,7 +38,7 @@ const Projects = () => {
       title: "Trishul360",
       description: "Created a fully automated hydroponic system with sensors to monitor water quality, nutrient levels, and plant growth. Controlled via a mobile application.",
       technologies: ["Raspberry Pi", "Node.js", "React Native", "Sensors", "Automation"],
-      image: "hydroponic-garden.jpg",
+      image: "chandan.png",
       github: "",
       demo: ""
     },
@@ -46,7 +46,7 @@ const Projects = () => {
       title: "Buzz Brief",
       description: "Created a fully automated hydroponic system with sensors to monitor water quality, nutrient levels, and plant growth. Controlled via a mobile application.",
       technologies: ["Raspberry Pi", "Node.js", "React Native", "Sensors", "Automation"],
-      image: "hydroponic-garden.jpg",
+      image: "buzz.png",
       github: "https://github.com/abhisheksonias/BuzzBrief",
       demo: "https://buzz-brief.vercel.app/"
     },
@@ -54,7 +54,7 @@ const Projects = () => {
       title: "Satyamed",
       description: "Created a fully automated hydroponic system with sensors to monitor water quality, nutrient levels, and plant growth. Controlled via a mobile application.",
       technologies: ["Raspberry Pi", "Node.js", "React Native", "Sensors", "Automation"],
-      image: "hydroponic-garden.jpg",
+      image: "satya.png",
       github: "https://github.com",
       demo: "https://demo.com"
     },
@@ -62,7 +62,7 @@ const Projects = () => {
       title: "BlockChain Based Projects ",
       description: "Created a fully automated hydroponic system with sensors to monitor water quality, nutrient levels, and plant growth. Controlled via a mobile application.",
       technologies: ["Raspberry Pi", "Node.js", "React Native", "Sensors", "Automation"],
-      image: "hydroponic-garden.jpg",
+      image: "bc.jpg",
       github: "https://github.com/abhisheksonias/Blockchain-Projects",
       demo: "https://github.com/abhisheksonias/Blockchain-Projects"
     },
@@ -70,7 +70,7 @@ const Projects = () => {
       title: "Satarksetu",
       description: "Developed a software tool for analyzing structural integrity of buildings under various stress conditions. Includes 3D visualization and simulation capabilities.",
       technologies: ["Python", "C++", "Three.js", "Physics Engine", "WebGL"],
-      image: "structural-analysis.jpg",
+      image: "1.png",
       github: "https://github.com",
       demo: "https://demo.com"
     },
@@ -78,7 +78,7 @@ const Projects = () => {
       title: "ATC Agency",
       description: "Developed a software tool for analyzing structural integrity of buildings under various stress conditions. Includes 3D visualization and simulation capabilities.",
       technologies: ["Python", "C++", "Three.js", "Physics Engine", "WebGL"],
-      image: "structural-analysis.jpg",
+      image: "atc.png",
       github: "https://github.com/abhisheksonias/ATC",
       demo: "https://atc-ebon-tau.vercel.app/"
     },
@@ -86,7 +86,7 @@ const Projects = () => {
       title: "Hospital Management System",
       description: "Designed an AI-powered traffic management system that optimizes signal timing based on real-time traffic conditions, reducing congestion and wait times.",
       technologies: ["Computer Vision", "TensorFlow", "Embedded Systems", "Data Analysis"],
-      image: "traffic-management.jpg",
+      image: "hm.png",
       github: "https://github.com/abhisheksonias/hospitalmanagement",
       demo: "https://hospitalmanagement-master.vercel.app/"
     },
@@ -94,7 +94,7 @@ const Projects = () => {
       title: "K7 website",
       description: "Created a wearable device that monitors vital signs and provides health insights. Features include heart rate monitoring, sleep tracking, and activity recognition.",
       technologies: ["Embedded C", "Bluetooth", "Mobile App", "Data Visualization", "Health Metrics"],
-      image: "health-monitor.jpg",
+      image: "k7.png",
       github: "https://github.com/abhisheksonias/K7",
       demo: "https://k7-beryl.vercel.app/"
     },
@@ -102,7 +102,7 @@ const Projects = () => {
       title: "VyayamZone",
       description: "Created a wearable device that monitors vital signs and provides health insights. Features include heart rate monitoring, sleep tracking, and activity recognition.",
       technologies: ["Embedded C", "Bluetooth", "Mobile App", "Data Visualization", "Health Metrics"],
-      image: "health-monitor.jpg",
+      image: "vyayamzone.png",
       github: "https://github.com/abhisheksonias/vyayamzone",
       demo: "https://vyayamzone.vercel.app/"
     },
@@ -110,7 +110,7 @@ const Projects = () => {
       title: "Rajasthan Tour Advisor",
       description: "Created a wearable device that monitors vital signs and provides health insights. Features include heart rate monitoring, sleep tracking, and activity recognition.",
       technologies: ["Embedded C", "Bluetooth", "Mobile App", "Data Visualization", "Health Metrics"],
-      image: "health-monitor.jpg",
+      image: "rta.png",
       github: "https://github.com/abhisheksonias/Rajasthantouradvisor",
       demo: "https://rajasthantouradvisor27.vercel.app/"
     },
@@ -166,7 +166,7 @@ const Projects = () => {
               <img  
                 className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110" 
                 alt={project.title}
-                src="https://images.unsplash.com/photo-1694388001616-1176f534d72f" 
+                src={`/Project/${project.image}`}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500"></div>
               
@@ -243,7 +243,7 @@ const Projects = () => {
           Interested in collaborating or want to see more projects?
         </p>
         <a 
-          href="#contact" 
+          href="/Services" 
           className="inline-flex items-center gap-2 px-8 py-3 text-white font-medium bg-gradient-to-r from-blue-500 to-purple-600 rounded-full hover:from-blue-600 hover:to-purple-700 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/30 hover:scale-105"
         >
           Get In Touch

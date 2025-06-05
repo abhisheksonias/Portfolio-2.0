@@ -2,7 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Github, Linkedin, Mail, Download } from 'lucide-react';
+import { ArrowRight, Github, Linkedin, Mail, Download, Instagram } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
@@ -73,6 +73,12 @@ const Home = () => {
               <Button variant="ghost" size="icon" className="rounded-full">
                 <Linkedin className="h-5 w-5" />
                 <span className="sr-only">LinkedIn</span>
+              </Button>
+            </a>
+            <a href="https://www.instagram.com/abhisheksoni_12" target="_blank" rel="noopener noreferrer" className="transition-transform hover:scale-110">
+              <Button variant="ghost" size="icon" className="rounded-full">
+                <Instagram className="h-5 w-5" />
+                <span className="sr-only">Instagram</span>
               </Button>
             </a>
             <a href="mailto:abhisheksoni1207@gmail.com" className="transition-transform hover:scale-110">
