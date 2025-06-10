@@ -562,9 +562,11 @@ const Services = () => {
               <Calendar className="h-5 w-5" />
               Book a Call
             </Button>
-            <Button size="lg" variant="outline" className="px-8 gap-2">
-              <MessageSquare className="h-5 w-5" />
-              Contact Me
+            <Button size="lg" variant="outline" className="px-8 gap-2" asChild>
+              <a href="mailto:abhisheksoni1207@gmail.com">
+                <MessageSquare className="h-5 w-5" />
+                Contact Me
+              </a>
             </Button>
           </div>
         </div>
