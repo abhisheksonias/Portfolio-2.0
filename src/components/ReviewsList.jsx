@@ -1,33 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { supabase } from "../lib/supabase";
-import { motion } from "framer-motion";
-import { Star } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 
 const ReviewsList = () => {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.5, ease: "easeOut" },
-    },
-  };
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
 
   useEffect(() => {
     const fetchReviews = async () => {
@@ -73,6 +54,64 @@ const ReviewsList = () => {
     fetchReviews();
   }, []);
 
+  // Swipe variants
+  const slideVariants = {
+    enter: (direction) => ({
+      x: direction > 0 ? 1000 : -1000,
+      opacity: 0,
+      scale: 0.8,
+    }),
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1,
+      scale: 1,
+    },
+    exit: (direction) => ({
+      zIndex: 0,
+      x: direction < 0 ? 1000 : -1000,
+      opacity: 0,
+      scale: 0.8,
+    }),
+  };
+
+  const swipeConfidenceThreshold = 10000;
+  const swipePower = (offset, velocity) => {
+    return Math.abs(offset) * velocity;
+  };
+
+  const paginate = (newDirection) => {
+    setDirection(newDirection);
+    setCurrentIndex((prevIndex) => {
+      if (newDirection === 1) {
+        return prevIndex === reviews.length - 1 ? 0 : prevIndex + 1;
+      } else {
+        return prevIndex === 0 ? reviews.length - 1 : prevIndex - 1;
+      }
+    });
+  };
+
+  const handleDragEnd = (e, { offset, velocity }) => {
+    const swipe = swipePower(offset.x, velocity.x);
+
+    if (swipe < -swipeConfidenceThreshold) {
+      paginate(1);
+    } else if (swipe > swipeConfidenceThreshold) {
+      paginate(-1);
+    }
+  };
+
+  // Auto-swipe functionality
+  useEffect(() => {
+    if (reviews.length > 1) {
+      const interval = setInterval(() => {
+        paginate(1);
+      }, 5000); // Auto-swipe every 5 seconds
+
+      return () => clearInterval(interval);
+    }
+  }, [reviews.length, currentIndex]);
+
   if (loading) {
     return (
       <div className="text-center py-10">
@@ -101,61 +140,123 @@ const ReviewsList = () => {
   }
 
   return (
-    <motion.div
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      className="grid grid-cols-1 md:grid-cols-3 gap-8"
-    >
-      {reviews.map((review) => (
-        <motion.div
-          key={review.id}
-          variants={itemVariants}
-          className="testimonial-card glass-effect p-6 rounded-xl"
-          whileHover={{ scale: 1.03 }}
-        >
-          {/* Star rating */}
-          <div className="flex mb-4">
-            {[...Array(review.rating)].map((_, i) => (
-              <Star
-                key={i}
-                className="h-5 w-5 text-yellow-500 fill-yellow-500"
-              />
-            ))}
-            {[...Array(5 - review.rating)].map((_, i) => (
-              <Star
-                key={i + review.rating}
-                className="h-5 w-5 text-gray-400"
-              />
-            ))}
-          </div>
-
-          <p className="text-lg italic mb-6">"{review.content}"</p>
-
-          <div className="flex items-center">
-            {review.hasImage ? (
-              <img
-                src={review.image_url}
-                alt={review.name}
-                className="h-12 w-12 rounded-full mr-4 object-cover"
-              />
-            ) : (
-              <div className="h-12 w-12 rounded-full mr-4 flex items-center justify-center bg-primary/20 text-primary font-bold text-lg uppercase">
-                {review.avatarInitials}
+    <div className="relative w-full max-w-4xl mx-auto">
+      {/* Main carousel container */}
+      <div className="relative h-80 overflow-hidden rounded-2xl">
+        <AnimatePresence initial={false} custom={direction}>
+          <motion.div
+            key={currentIndex}
+            custom={direction}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{
+              x: { type: "spring", stiffness: 300, damping: 30 },
+              opacity: { duration: 0.2 },
+              scale: { duration: 0.2 },
+            }}
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={1}
+            onDragEnd={handleDragEnd}
+            className="absolute inset-0 cursor-grab active:cursor-grabbing"
+          >
+            <div className="w-full h-full p-8 testimonial-card glass-effect rounded-2xl flex flex-col justify-between">
+              {/* Star rating */}
+              <div className="flex justify-center mb-4">
+                {[...Array(reviews[currentIndex].rating)].map((_, i) => (
+                  <Star
+                    key={i}
+                    className="h-6 w-6 text-yellow-500 fill-yellow-500 mx-1"
+                  />
+                ))}
+                {[...Array(5 - reviews[currentIndex].rating)].map((_, i) => (
+                  <Star
+                    key={i + reviews[currentIndex].rating}
+                    className="h-6 w-6 text-gray-400 mx-1"
+                  />
+                ))}
               </div>
-            )}
-            <div>
-              <h4 className="font-bold">{review.name}</h4>
-              {review.company && (
-                <p className="text-sm text-muted-foreground">
-                  {review.company}
+
+              {/* Review content */}
+              <div className="flex-1 flex items-center justify-center">
+                <p className="text-xl italic text-center leading-relaxed mb-6">
+                  "{reviews[currentIndex].content}"
                 </p>
-              )}
+              </div>
+
+              {/* Author info */}
+              <div className="flex items-center justify-center mt-6">
+                {reviews[currentIndex].hasImage ? (
+                  <img
+                    src={reviews[currentIndex].image_url}
+                    alt={reviews[currentIndex].name}
+                    className="h-12 w-12 rounded-full mr-4 object-cover"
+                  />
+                ) : (
+                  <div className="h-12 w-12 rounded-full mr-4 flex items-center justify-center bg-primary/20 text-primary font-bold text-lg uppercase">
+                    {reviews[currentIndex].avatarInitials}
+                  </div>
+                )}
+                <div className="text-center">
+                  <h4 className="font-bold">
+                    {reviews[currentIndex].name}
+                  </h4>
+                  {reviews[currentIndex].company && (
+                    <p className="text-sm text-muted-foreground">
+                      {reviews[currentIndex].company}
+                    </p>
+                  )}
+                </div>
+              </div>
             </div>
-          </div>
-        </motion.div>
-      ))}
-    </motion.div>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* Navigation arrows */}
+      <button
+        onClick={() => paginate(-1)}
+        className="absolute left-4 top-1/2 transform -translate-y-1/2 glass-effect rounded-full p-3 transition-all duration-200 hover:scale-110"
+        disabled={reviews.length <= 1}
+      >
+        <ChevronLeft className="h-6 w-6" />
+      </button>
+
+      <button
+        onClick={() => paginate(1)}
+        className="absolute right-4 top-1/2 transform -translate-y-1/2 glass-effect rounded-full p-3 transition-all duration-200 hover:scale-110"
+        disabled={reviews.length <= 1}
+      >
+        <ChevronRight className="h-6 w-6" />
+      </button>
+
+      {/* Dots indicator */}
+      <div className="flex justify-center mt-6 space-x-2">
+        {reviews.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => {
+              setDirection(index > currentIndex ? 1 : -1);
+              setCurrentIndex(index);
+            }}
+            className={`w-3 h-3 rounded-full transition-all duration-200 ${
+              index === currentIndex
+                ? "bg-primary scale-125"
+                : "bg-muted hover:bg-muted-foreground"
+            }`}
+          />
+        ))}
+      </div>
+
+      {/* Swipe hint */}
+      <div className="text-center mt-4">
+        <p className="text-sm text-muted-foreground">
+          Swipe or use arrows to navigate • Auto-advances every 5 seconds
+        </p>
+      </div>
+    </div>
   );
 };
 
