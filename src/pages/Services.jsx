@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import {
@@ -17,6 +17,8 @@ import {
   Workflow,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import ReviewsList from "../components/ReviewsList";
+import ReviewForm from "../components/ReviewForm";
 
 const Services = () => {
   const containerVariants = {
@@ -187,33 +189,8 @@ const Services = () => {
       icon: <Workflow className="h-8 w-8" />,
     },
   ];
-
-  const testimonials = [
-    {
-      name: "Rahul Sharma",
-      company: "TechStart Solutions",
-      rating: 5,
-      quote:
-        "Abhishek delivered our website ahead of schedule and exceeded all our expectations. His attention to detail and communication skills made the whole process seamless.",
-      image: "https://randomuser.me/api/portraits/men/32.jpg",
-    },
-    {
-      name: "Priya Patel",
-      company: "Creative Minds Agency",
-      rating: 5,
-      quote:
-        "The web application Abhishek built for us transformed our business processes. His technical expertise and problem-solving abilities are truly impressive.",
-      image: "https://randomuser.me/api/portraits/women/44.jpg",
-    },
-    {
-      name: "Vikram Mehta",
-      company: "InnoTech Startup",
-      rating: 5,
-      quote:
-        "Working with Abhishek was a game-changer for our startup. He understood our vision perfectly and delivered a product that our users love.",
-      image: "https://randomuser.me/api/portraits/men/67.jpg",
-    },
-  ];
+  // Add state to toggle review form visibility
+  const [showReviewForm, setShowReviewForm] = useState(false);
 
   return (
     <motion.div
@@ -394,9 +371,7 @@ const Services = () => {
             ))}
           </div>
         </div>
-      </motion.section>
-
-      {/* Client Testimonials */}
+      </motion.section>      {/* Client Testimonials */}
       <motion.section variants={containerVariants} className="mb-24">
         <div className="text-center mb-16">
           <motion.h2
@@ -411,43 +386,53 @@ const Services = () => {
           >
             Don't just take my word for it - here's what my clients have to say
           </motion.p>
-        </div>
+        </div>        {/* Display reviews from database */}
+        <ReviewsList />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
+        {/* Leave a Review Section */}
+        <div className="mt-20 text-center">
+          <motion.h3
+            variants={itemVariants}
+            className="text-2xl md:text-3xl font-bold mb-4"
+          >
+            Worked With Me? Leave a Review
+          </motion.h3>
+          <motion.p
+            variants={itemVariants}
+            className="text-muted-foreground max-w-2xl mx-auto mb-8"
+          >
+            Your feedback helps me improve and helps others make informed decisions
+          </motion.p>
+          
+          {!showReviewForm ? (
+            <motion.div variants={itemVariants}>
+              <Button 
+                onClick={() => setShowReviewForm(true)} 
+                size="lg"
+                className="mx-auto"
+              >
+                Share Your Experience
+              </Button>
+            </motion.div>
+          ) : (
             <motion.div
-              key={index}
-              variants={itemVariants}
-              className="testimonial-card glass-effect p-6 rounded-xl"
-              whileHover={{ scale: 1.03 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="max-w-2xl mx-auto"
             >
-              {/* Star rating */}
-              <div className="flex mb-4">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star
-                    key={i}
-                    className="h-5 w-5 text-yellow-500 fill-yellow-500"
-                  />
-                ))}
-              </div>
-
-              <p className="text-lg italic mb-6">"{testimonial.quote}"</p>
-
-              <div className="flex items-center">
-                <img
-                  src={testimonial.image}
-                  alt={testimonial.name}
-                  className="h-12 w-12 rounded-full mr-4 object-cover"
-                />
-                <div>
-                  <h4 className="font-bold">{testimonial.name}</h4>
-                  <p className="text-sm text-muted-foreground">
-                    {testimonial.company}
-                  </p>
-                </div>
+              <ReviewForm />
+              <div className="mt-4 text-center">
+                <Button 
+                  variant="ghost" 
+                  onClick={() => setShowReviewForm(false)}
+                  size="sm"
+                >
+                  Cancel
+                </Button>
               </div>
             </motion.div>
-          ))}
+          )}
         </div>
       </motion.section>
 
