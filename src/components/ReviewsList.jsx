@@ -142,8 +142,8 @@ const ReviewsList = () => {
   return (
     <div className="relative w-full max-w-4xl mx-auto">
       {/* Main carousel container */}
-      <div className="relative h-80 overflow-hidden rounded-2xl">
-        <AnimatePresence initial={false} custom={direction}>
+      <div className="relative overflow-hidden rounded-2xl">
+        <AnimatePresence mode="wait" initial={false} custom={direction}>
           <motion.div
             key={currentIndex}
             custom={direction}
@@ -160,11 +160,11 @@ const ReviewsList = () => {
             dragConstraints={{ left: 0, right: 0 }}
             dragElastic={1}
             onDragEnd={handleDragEnd}
-            className="absolute inset-0 cursor-grab active:cursor-grabbing"
+            className="w-full cursor-grab active:cursor-grabbing"
           >
-            <div className="w-full h-full p-8 testimonial-card glass-effect rounded-2xl flex flex-col justify-between">
+            <div className="w-full p-8 testimonial-card glass-effect rounded-2xl flex flex-col justify-between min-h-[280px]">
               {/* Star rating */}
-              <div className="flex justify-center mb-4">
+              <div className="flex justify-center mb-6 flex-shrink-0">
                 {[...Array(reviews[currentIndex].rating)].map((_, i) => (
                   <Star
                     key={i}
@@ -180,14 +180,14 @@ const ReviewsList = () => {
               </div>
 
               {/* Review content */}
-              <div className="flex-1 flex items-center justify-center">
-                <p className="text-xl italic text-center leading-relaxed mb-6">
+              <div className="flex-1 flex items-center justify-center py-4">
+                <p className="text-xl italic text-center leading-relaxed max-w-3xl">
                   "{reviews[currentIndex].content}"
                 </p>
               </div>
 
               {/* Author info */}
-              <div className="flex items-center justify-center mt-6">
+              <div className="flex items-center justify-center mt-6 flex-shrink-0">
                 {reviews[currentIndex].hasImage ? (
                   <img
                     src={reviews[currentIndex].image_url}
@@ -200,11 +200,11 @@ const ReviewsList = () => {
                   </div>
                 )}
                 <div className="text-center">
-                  <h4 className="font-bold">
+                  <h4 className="font-bold text-lg">
                     {reviews[currentIndex].name}
                   </h4>
                   {reviews[currentIndex].company && (
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-sm text-muted-foreground mt-1">
                       {reviews[currentIndex].company}
                     </p>
                   )}
@@ -216,21 +216,25 @@ const ReviewsList = () => {
       </div>
 
       {/* Navigation arrows */}
-      <button
-        onClick={() => paginate(-1)}
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 glass-effect rounded-full p-3 transition-all duration-200 hover:scale-110"
-        disabled={reviews.length <= 1}
-      >
-        <ChevronLeft className="h-6 w-6" />
-      </button>
+      {/* <div className="relative">
+        <button
+          onClick={() => paginate(-1)}
+          className="absolute left-4 top-1/2 transform -translate-y-1/2 glass-effect rounded-full p-3 transition-all duration-200 hover:scale-110 z-10"
+          disabled={reviews.length <= 1}
+          style={{ marginTop: '-24px' }}
+        >
+          <ChevronLeft className="h-6 w-6" />
+        </button>
 
-      <button
-        onClick={() => paginate(1)}
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 glass-effect rounded-full p-3 transition-all duration-200 hover:scale-110"
-        disabled={reviews.length <= 1}
-      >
-        <ChevronRight className="h-6 w-6" />
-      </button>
+        <button
+          onClick={() => paginate(1)}
+          className="absolute right-4 top-1/2 transform -translate-y-1/2 glass-effect rounded-full p-3 transition-all duration-200 hover:scale-110 z-10"
+          disabled={reviews.length <= 1}
+          style={{ marginTop: '-24px' }}
+        >
+          <ChevronRight className="h-6 w-6" />
+        </button>
+      </div> */}
 
       {/* Dots indicator */}
       <div className="flex justify-center mt-6 space-x-2">
@@ -251,11 +255,11 @@ const ReviewsList = () => {
       </div>
 
       {/* Swipe hint */}
-      <div className="text-center mt-4">
+      {/* <div className="text-center mt-4">
         <p className="text-sm text-muted-foreground">
           Swipe or use arrows to navigate • Auto-advances every 5 seconds
         </p>
-      </div>
+      </div> */}
     </div>
   );
 };
