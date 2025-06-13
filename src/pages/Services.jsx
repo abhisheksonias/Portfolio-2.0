@@ -19,7 +19,6 @@ import {
 import { Link } from "react-router-dom";
 import ReviewsList from "../components/ReviewsList";
 import ReviewForm from "../components/ReviewForm";
-import CalendlyWidget from "../components/CalendlyWidget";
 const Services = () => {
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -157,12 +156,6 @@ const Services = () => {
     },
   ];
 
-const openPopup = () => {
-    window.Calendly.initPopupWidget({
-      url: "https://calendly.com/abhisheksoni1207/new-meeting",
-    });
-    return false;
-  };
   const workProcess = [
     {
       title: "Requirement Discussion",
@@ -195,8 +188,6 @@ const openPopup = () => {
       icon: <Workflow className="h-8 w-8" />,
     },
   ];
-
-  
   // Add state to toggle review form visibility
   const [showReviewForm, setShowReviewForm] = useState(false);
 
@@ -217,9 +208,10 @@ const openPopup = () => {
           will bring your vision to life with clean code and creative thinking.
         </p>
         <div className="flex flex-wrap justify-center gap-4">
-          <button onClick={openPopup} className="px-6 py-2 bg-blue-600 text-white rounded-md">
-      Book a Free Call
-    </button>
+          <Button size="lg" className="px-8 gap-2">
+            <Calendar className="h-5 w-5" />
+            Book a Free Call
+          </Button>
           <Button size="lg" variant="outline" className="px-8 gap-2">
             Get a Quote
             <ArrowRight className="h-5 w-5" />
