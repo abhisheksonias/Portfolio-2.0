@@ -3,6 +3,7 @@ import { supabase } from "../lib/supabase";
 import { motion, AnimatePresence } from "framer-motion";
 import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 
+
 const ReviewsList = () => {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -186,6 +187,27 @@ const ReviewsList = () => {
                 </p>
               </div>
 
+              {/* Navigation arrows */}
+              {/* <div className="relative">
+                <button
+                  onClick={() => paginate(-1)}
+                  className="absolute left-4 top-1/2 transform -translate-y-1/2 glass-effect rounded-full p-3 transition-all duration-200 hover:scale-110 z-10"
+                  disabled={reviews.length <= 1}
+                  style={{ marginTop: "-24px" }}
+                >
+                  <ChevronLeft className="h-6 w-6" />
+                </button>
+
+                <button
+                  onClick={() => paginate(1)}
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 glass-effect rounded-full p-3 transition-all duration-200 hover:scale-110 z-10"
+                  disabled={reviews.length <= 1}
+                  style={{ marginTop: "-24px" }}
+                >
+                  <ChevronRight className="h-6 w-6" />
+                </button>
+              </div> */}
+
               {/* Author info */}
               <div className="flex items-center justify-center mt-6 flex-shrink-0">
                 {reviews[currentIndex].hasImage ? (
@@ -214,27 +236,6 @@ const ReviewsList = () => {
           </motion.div>
         </AnimatePresence>
       </div>
-
-      {/* Navigation arrows */}
-      {/* <div className="relative">
-        <button
-          onClick={() => paginate(-1)}
-          className="absolute left-4 top-1/2 transform -translate-y-1/2 glass-effect rounded-full p-3 transition-all duration-200 hover:scale-110 z-10"
-          disabled={reviews.length <= 1}
-          style={{ marginTop: '-24px' }}
-        >
-          <ChevronLeft className="h-6 w-6" />
-        </button>
-
-        <button
-          onClick={() => paginate(1)}
-          className="absolute right-4 top-1/2 transform -translate-y-1/2 glass-effect rounded-full p-3 transition-all duration-200 hover:scale-110 z-10"
-          disabled={reviews.length <= 1}
-          style={{ marginTop: '-24px' }}
-        >
-          <ChevronRight className="h-6 w-6" />
-        </button>
-      </div> */}
 
       {/* Dots indicator */}
       <div className="flex justify-center mt-6 space-x-2">

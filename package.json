@@ -28,6 +28,7 @@
     "framer-motion": "^10.16.4",
     "lucide-react": "^0.285.0",
     "react": "^18.2.0",
+    "react-calendly": "^4.4.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.16.0",
     "tailwind-merge": "^1.14.0",
