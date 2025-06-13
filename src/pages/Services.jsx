@@ -19,6 +19,8 @@ import {
 import { Link } from "react-router-dom";
 import ReviewsList from "../components/ReviewsList";
 import ReviewForm from "../components/ReviewForm";
+import { useRef } from "react";
+
 const Services = () => {
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -39,6 +41,12 @@ const Services = () => {
       transition: { duration: 0.5, ease: "easeOut" },
     },
   };
+
+  const contactFormRef = useRef(null);
+
+const scrollToContactForm = () => {
+  contactFormRef.current?.scrollIntoView({ behavior: "smooth" });
+};
 
   const servicesOffered = [
     {
@@ -217,7 +225,7 @@ const Services = () => {
               Book a Free Call
             </a>
           </Button>
-          <Button size="lg" variant="outline" className="px-8 gap-2">
+          <Button size="lg" variant="outline" className="px-8 gap-2" onClick={scrollToContactForm}>
             Get a Quote
             <ArrowRight className="h-5 w-5" />
           </Button>
@@ -315,7 +323,7 @@ const Services = () => {
           <p className="text-xl mb-6">
             Need a custom solution? Let's discuss your project requirements.
           </p>
-          <Button size="lg" className="gap-2">
+          <Button size="lg" className="gap-2" onClick={scrollToContactForm}>
             Contact for a Custom Quote
             <ArrowRight className="h-5 w-5" />
           </Button>
@@ -445,7 +453,7 @@ const Services = () => {
         </div>
       </motion.section>
       {/* Contact / Inquiry Form */}
-      <motion.section variants={containerVariants} className="mb-24">
+      <motion.section variants={containerVariants} className="mb-24" ref={contactFormRef}>
         <div className="text-center mb-16">
           <motion.h2
             variants={itemVariants}
