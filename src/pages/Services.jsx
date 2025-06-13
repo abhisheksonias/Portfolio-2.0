@@ -190,6 +190,9 @@ const Services = () => {
   ];
   // Add state to toggle review form visibility
   const [showReviewForm, setShowReviewForm] = useState(false);
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [formLoading, setFormLoading] = useState(false);
+  const [formError, setFormError] = useState("");
 
   return (
     <motion.div
@@ -459,96 +462,144 @@ const Services = () => {
         </div>
 
         <div className="max-w-3xl mx-auto">
-          <motion.form
-            variants={itemVariants}
-            className="grid grid-cols-1 md:grid-cols-2 gap-6 glass-effect p-8 rounded-xl"
-          >
-            <div className="form-group">
-              <label htmlFor="name" className="block text-sm font-medium mb-2">
-                Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                className="w-full px-4 py-2 rounded-md border bg-background/50"
-                placeholder="Your Name"
-              />
+          {formSubmitted ? (
+            <div className="glass-effect rounded-xl p-8 text-center">
+              <h3 className="text-2xl font-bold mb-4 gradient-text">Thank you!</h3>
+              <p className="text-muted-foreground mb-2">Your inquiry has been received. I'll get back to you within 24 hours.</p>
             </div>
+          ) : (
+            <motion.form
+              variants={itemVariants}
+              className="grid grid-cols-1 md:grid-cols-2 gap-6 glass-effect p-8 rounded-xl"
+              onSubmit={async (e) => {
+                e.preventDefault();
+                setFormLoading(true);
+                setFormError("");
+                const form = e.target;
+                const data = new FormData(form);
+                try {
+                  const res = await fetch("https://formsubmit.co/ajax/abhisheksoni1207@gmail.com", {
+                    method: "POST",
+                    body: data,
+                    headers: {
+                      Accept: "application/json",
+                    },
+                  });
+                  if (res.ok) {
+                    setFormSubmitted(true);
+                  } else {
+                    setFormError("Something went wrong. Please try again later.");
+                  }
+                } catch (err) {
+                  setFormError("Something went wrong. Please try again later.");
+                } finally {
+                  setFormLoading(false);
+                }
+              }}
+            >
+              <input type="hidden" name="_captcha" value="false" />
 
-            <div className="form-group">
-              <label htmlFor="email" className="block text-sm font-medium mb-2">
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                className="w-full px-4 py-2 rounded-md border bg-background/50"
-                placeholder="your@email.com"
-              />
-            </div>
+              <div className="form-group">
+                <label htmlFor="name" className="block text-sm font-medium mb-2">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  className="w-full px-4 py-2 rounded-md border bg-background/50"
+                  placeholder="Your Name"
+                  required
+                />
+              </div>
 
-            <div className="form-group">
-              <label
-                htmlFor="project-type"
-                className="block text-sm font-medium mb-2"
-              >
-                Project Type
-              </label>
-              <select
-                id="project-type"
-                className="w-full px-4 py-2 rounded-md border bg-background/50"
-              >
-                <option value="">Select Project Type</option>
-                <option value="website">Website Development</option>
-                <option value="webapp">Web Application</option>
-                <option value="ecommerce">E-Commerce</option>
-                <option value="api">API Development</option>
-                <option value="ai">AI Integration</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
+              <div className="form-group">
+                <label htmlFor="email" className="block text-sm font-medium mb-2">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  className="w-full px-4 py-2 rounded-md border bg-background/50"
+                  placeholder="your@email.com"
+                  required
+                />
+              </div>
 
-            <div className="form-group">
-              <label
-                htmlFor="budget"
-                className="block text-sm font-medium mb-2"
-              >
-                Budget Range
-              </label>
-              <select
-                id="budget"
-                className="w-full px-4 py-2 rounded-md border bg-background/50"
-              >
-                <option value="">Select Budget Range</option>
-                <option value="5k-10k">₹5,000 - ₹10,000</option>
-                <option value="10k-25k">₹10,000 - ₹25,000</option>
-                <option value="25k-50k">₹25,000 - ₹50,000</option>
-                <option value="50k-100k">₹50,000 - ₹100,000</option>
-                <option value="100k+">₹100,000+</option>
-              </select>
-            </div>
+              <div className="form-group">
+                <label
+                  htmlFor="project-type"
+                  className="block text-sm font-medium mb-2"
+                >
+                  Project Type
+                </label>
+                <select
+                  id="project-type"
+                  name="project-type"
+                  className="w-full px-4 py-2 rounded-md border bg-background/50"
+                  required
+                >
+                  <option value="">Select Project Type</option>
+                  <option value="website">Website Development</option>
+                  <option value="webapp">Web Application</option>
+                  <option value="ecommerce">E-Commerce</option>
+                  <option value="api">API Development</option>
+                  <option value="ai">AI Integration</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
 
-            <div className="form-group md:col-span-2">
-              <label
-                htmlFor="message"
-                className="block text-sm font-medium mb-2"
-              >
-                Project Details
-              </label>
-              <textarea
-                id="message"
-                className="w-full px-4 py-2 rounded-md border bg-background/50 h-32"
-                placeholder="Please describe your project needs and timeline..."
-              ></textarea>
-            </div>
+              <div className="form-group">
+                <label
+                  htmlFor="budget"
+                  className="block text-sm font-medium mb-2"
+                >
+                  Budget Range
+                </label>
+                <select
+                  id="budget"
+                  name="budget"
+                  className="w-full px-4 py-2 rounded-md border bg-background/50"
+                  required
+                >
+                  <option value="">Select Budget Range</option>
+                  <option value="5k-10k">₹5,000 - ₹10,000</option>
+                  <option value="10k-25k">₹10,000 - ₹25,000</option>
+                  <option value="25k-50k">₹25,000 - ₹50,000</option>
+                  <option value="50k-100k">₹50,000 - ₹100,000</option>
+                  <option value="100k+">₹100,000+</option>
+                </select>
+              </div>
 
-            <div className="md:col-span-2 flex justify-end">
-              <Button type="submit" size="lg" className="gap-2">
-                Let's Talk
-                <ArrowRight className="h-5 w-5" />
-              </Button>
-            </div>
-          </motion.form>
+              <div className="form-group md:col-span-2">
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium mb-2"
+                >
+                  Project Details
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  className="w-full px-4 py-2 rounded-md border bg-background/50 h-32"
+                  placeholder="Please describe your project needs and timeline..."
+                  required
+                ></textarea>
+              </div>
+
+              {formError && (
+                <div className="md:col-span-2 text-red-500 text-center mb-2">{formError}</div>
+              )}
+
+              <div className="md:col-span-2 flex justify-end">
+                <Button type="submit" size="lg" className="gap-2" disabled={formLoading}>
+                  {formLoading ? "Sending..." : "Let's Talk"}
+                  <ArrowRight className="h-5 w-5" />
+                </Button>
+              </div>
+            </motion.form>
+          )}
         </div>
       </motion.section>
       {/* Call to Action Footer */}
