@@ -210,7 +210,7 @@ const Services = () => {
         <div className="flex flex-wrap justify-center gap-4">
           <Button size="lg" className="px-8 gap-2">
             <Calendar className="h-5 w-5" />
-            Book a Free Call
+            <a href="https://calendly.com/abhisheksoni1207/new-meeting">Book a Free Call</a>
           </Button>
           <Button size="lg" variant="outline" className="px-8 gap-2">
             Get a Quote
