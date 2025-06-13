@@ -210,7 +210,9 @@ const Services = () => {
         <div className="flex flex-wrap justify-center gap-4">
           <Button size="lg" className="px-8 gap-2">
             <Calendar className="h-5 w-5" />
-            <a href="https://calendly.com/abhisheksoni1207/new-meeting">Book a Free Call</a>
+            <a href="https://calendly.com/abhisheksoni1207/new-meeting">
+              Book a Free Call
+            </a>
           </Button>
           <Button size="lg" variant="outline" className="px-8 gap-2">
             Get a Quote
@@ -218,7 +220,6 @@ const Services = () => {
           </Button>
         </div>
       </motion.div>
-
       {/* Services Offered */}
       <motion.section variants={containerVariants} className="mb-24">
         <div className="text-center mb-16">
@@ -264,7 +265,6 @@ const Services = () => {
           ))}
         </div>
       </motion.section>
-
       {/* Packages / Pricing */}
       <motion.section variants={containerVariants} className="mb-24">
         <div className="text-center mb-16">
@@ -318,7 +318,6 @@ const Services = () => {
           </Button>
         </motion.div>
       </motion.section>
-
       {/* How I Work / Process */}
       <motion.section variants={containerVariants} className="mb-24">
         <div className="text-center mb-12">
@@ -340,7 +339,7 @@ const Services = () => {
         <div className="relative max-w-4xl mx-auto">
           {/* Timeline line */}
           <div className="absolute left-4 md:left-1/2 top-0 h-full w-1 bg-gradient-to-b from-primary/40 via-primary/60 to-primary/40 transform md:-translate-x-1/2"></div>
-          
+
           <div className="space-y-12">
             {workProcess.map((step, index) => (
               <motion.div
@@ -351,13 +350,19 @@ const Services = () => {
               >
                 {/* Timeline marker */}
                 <div className="absolute left-4 md:left-1/2 w-8 h-8 rounded-full bg-primary shadow-lg shadow-primary/20 flex items-center justify-center z-10 transform -translate-x-1/2 translate-y-1">
-                  <span className="text-sm font-bold text-white">{index + 1}</span>
+                  <span className="text-sm font-bold text-white">
+                    {index + 1}
+                  </span>
                 </div>
-                
+
                 {/* Content card */}
-                <div className={`glass-effect rounded-xl p-6 ml-12 md:ml-0 md:w-5/12 ${
-                  index % 2 === 0 ? 'md:mr-auto md:pr-8' : 'md:ml-auto md:pl-8'
-                }`}>
+                <div
+                  className={`glass-effect rounded-xl p-6 ml-12 md:ml-0 md:w-5/12 ${
+                    index % 2 === 0
+                      ? "md:mr-auto md:pr-8"
+                      : "md:ml-auto md:pl-8"
+                  }`}
+                >
                   <div className="flex items-center gap-4 mb-3">
                     <div className="bg-primary/10 p-2 rounded-lg text-primary">
                       {step.icon}
@@ -370,7 +375,8 @@ const Services = () => {
             ))}
           </div>
         </div>
-      </motion.section>      {/* Client Testimonials */}
+      </motion.section>{" "}
+      {/* Client Testimonials */}
       <motion.section variants={containerVariants} className="mb-24">
         <div className="text-center mb-16">
           <motion.h2
@@ -385,9 +391,9 @@ const Services = () => {
           >
             Don't just take my word for it - here's what my clients have to say
           </motion.p>
-        </div>        {/* Display reviews from database */}
+        </div>{" "}
+        {/* Display reviews from database */}
         <ReviewsList />
-
         {/* Leave a Review Section */}
         <div className="mt-20 text-center">
           <motion.h3
@@ -400,13 +406,14 @@ const Services = () => {
             variants={itemVariants}
             className="text-muted-foreground max-w-2xl mx-auto mb-8"
           >
-            Your feedback helps me improve and helps others make informed decisions
+            Your feedback helps me improve and helps others make informed
+            decisions
           </motion.p>
-          
+
           {!showReviewForm ? (
             <motion.div variants={itemVariants}>
-              <Button 
-                onClick={() => setShowReviewForm(true)} 
+              <Button
+                onClick={() => setShowReviewForm(true)}
                 size="lg"
                 className="mx-auto"
               >
@@ -422,8 +429,8 @@ const Services = () => {
             >
               <ReviewForm />
               <div className="mt-4 text-center">
-                <Button 
-                  variant="ghost" 
+                <Button
+                  variant="ghost"
                   onClick={() => setShowReviewForm(false)}
                   size="sm"
                 >
@@ -434,7 +441,6 @@ const Services = () => {
           )}
         </div>
       </motion.section>
-
       {/* Contact / Inquiry Form */}
       <motion.section variants={containerVariants} className="mb-24">
         <div className="text-center mb-16">
@@ -545,7 +551,6 @@ const Services = () => {
           </motion.form>
         </div>
       </motion.section>
-
       {/* Call to Action Footer */}
       <motion.section variants={itemVariants} className="text-center">
         <div className="cta-section glass-effect p-12 rounded-xl">
@@ -559,10 +564,17 @@ const Services = () => {
           <div className="flex flex-wrap justify-center gap-4">
             <Button size="lg" className="px-8 gap-2">
               <Calendar className="h-5 w-5" />
-              Book a Call
+              <a href="https://calendly.com/abhisheksoni1207/new-meeting">
+                Book a Free Call
+              </a>
             </Button>
             <Button size="lg" variant="outline" className="px-8 gap-2" asChild>
-              <a href="mailto:abhisheksoni1207@gmail.com">
+              <a
+                href="https://wa.me/917568268005"
+                className="flex items-center gap-2"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <MessageSquare className="h-5 w-5" />
                 Contact Me
               </a>
